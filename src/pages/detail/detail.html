@@ -1,0 +1,26 @@
+<ion-header>
+
+  <ion-navbar color="dark">
+    <ion-title *ngIf="movie">{{movie.original_title}}</ion-title>
+    <ion-buttons end>
+    <button ion-button incon-only style="font-size 1.7em" (click)="toggleFavorite()">
+    <ion-icon [name]="isFavorite ? 'star':'star-outline'"></ion-icon></button>
+  </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card *ngIf="movie">
+    <img src="{{'https://image.tmdb.org/t/p/w500/'+ movie.poster_path}}" />
+    <ion-card-header>
+      <h2>Synopsis
+        <ion-badge color="dark">{{movie.vote_average}}</ion-badge>
+      </h2>
+      
+    </ion-card-header>
+    <ion-card-content>{{movie.overview}}</ion-card-content>
+  </ion-card>
+
+</ion-content>
