@@ -16,6 +16,7 @@ interface IMovie{
   adult: boolean;
   overview: string;
   release_date: string;
+  
 }
 
 @IonicPage()

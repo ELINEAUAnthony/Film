@@ -8,6 +8,7 @@ interface IMovie {
   poster_path: string;
   original_title: string;
   overview: string;
+  language: string;
 }
 
 @IonicPage()
@@ -27,8 +28,8 @@ export class FilmPage {
    
    for(let i=1;i<20;i++){
       this.getFilm(i)
-     
    }
+   
    
     console.log(this.movies);
   }
@@ -37,14 +38,9 @@ export class FilmPage {
     this.navCtrl.push(DetailPage, movie);
   }
   getFilm(id){
-    /*this.movieApiProvider.getFilm(id)
-    .then(data => {
-      data.picture= "https://image.tmdb.org/t/p/w500/44sKJOGP3fTm4QXBcIuqu0RkdP7.jpg"
-      this.movies.push(data);
-    });*/
-
+    
     this.movieApiProvider.getFilm(id).subscribe(
-      (data) => {
+      data => {
           data.title = "original_title";
           data.picture = "{{'https://image.tmdb.org/t/p/w500/'+ backdrop_path}}";
           this.movies.push(data);
@@ -52,6 +48,8 @@ export class FilmPage {
 
        
         console.log(data);
+      }, error =>{
+        console.log(error)
       })
 
   }  
