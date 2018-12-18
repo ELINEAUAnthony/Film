@@ -25,36 +25,19 @@ export class FilmPage {
 
 
   ionViewDidLoad() {
+  
+    this.movieApiProvider.getFilm().subscribe(
+      data => {
+          
+          this.movies = data.results;
+   })
    
-   for(let i=1;i<20;i++){
-      this.getFilm(i)
-   }
    
-   
-    console.log(this.movies);
   }
 
   goToDetail(movie:IMovie){
     this.navCtrl.push(DetailPage, movie);
   }
-  getFilm(id){
-    
-    this.movieApiProvider.getFilm(id).subscribe(
-      data => {
-          data.title = "original_title";
-          data.picture = "{{'https://image.tmdb.org/t/p/w500/'+ backdrop_path}}";
-          this.movies.push(data);
-
-
-       
-        console.log(data);
-      }, error =>{
-        console.log(error)
-      })
-
-  }  
-
 }
-  
 
 
