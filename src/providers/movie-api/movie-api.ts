@@ -5,7 +5,9 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class MovieApiProvider {
-  private Url = 'https://api.themoviedb.org/3/movie/popular?'
+  private Urlpopular = 'https://api.themoviedb.org/3/movie/popular?'
+  private Urlrated = 'https://api.themoviedb.org/3/movie/top_rated?'
+  private Urlupcoming ='https://api.themoviedb.org/3/movie/upcoming?'
 
   Page = 1
 
@@ -17,15 +19,25 @@ export class MovieApiProvider {
     params:{
       "api_key" : "3af9c524dd7e2699f76bded125a10ba9",
       "language": "fr-FR",
-      "page": this.Page.toString()
+      "page": this.Page.toString(),
+      
     }
   }
   constructor(public http: HttpClient) {
     console.log('Hello MovieApiProvider Provider');
   }
-  public getFilm(iDpage):Observable<any>{
+  public getFilmpopular(iDpage):Observable<any>{
     this.httpOptions.params.page = iDpage.toString()
-    return this.http.get(this.Url ,this.httpOptions);
+    return this.http.get(this.Urlpopular ,this.httpOptions);
+  }
+  public getFilmrated(iDpage):Observable<any>{
+    this.httpOptions.params.page = iDpage.toString()
+    return this.http.get(this.Urlrated ,this.httpOptions);
+  }
+
+  public getFilmupcoming(iDpage):Observable<any>{
+    this.httpOptions.params.page = iDpage.toString()
+    return this.http.get(this.Urlupcoming,this.httpOptions);
   }
 
 }

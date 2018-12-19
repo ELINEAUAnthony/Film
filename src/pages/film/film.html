@@ -4,12 +4,27 @@
    <!--  <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>-->
-    <ion-title>Film</ion-title>
+    <ion-title>Film par Popularité</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
+  <!-- mise en place des boutons pour la navigation entre les recherches-->
+  <ion-grid>
+      <ion-row>
+      <ion-col>
+        <button ion-button color = "dark"[disabled]="!isenabled" (click)="goToPopular()">Popularité</button>
+      </ion-col>
+      <ion-col>
+          <button ion-button color="dark" (click)="goToNote()">Note</button>
+        </ion-col>
+        <ion-col>
+          <button ion-button color="dark" (click)="goToUpComing()">Sortie</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
   <ion-grid *ngIf="movies">
     <ion-row>
       <ion-col col-6 *ngFor="let movie of movies">

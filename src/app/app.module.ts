@@ -14,6 +14,8 @@ import { MorePage } from '../pages/more/more';
 import { FilmPage } from '../pages/film/film';
 import { MovieApiProvider } from '../providers/movie-api/movie-api';
 import { IonicStorageModule } from '@ionic/storage';
+import { NotePage } from '../pages/note/note';
+import { UpcomingPage } from '../pages/upcoming/upcoming';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { IonicStorageModule } from '@ionic/storage';
     DetailPage,
     MorePage,
     FilmPage,
-    TabsPage
+    TabsPage,
+    NotePage,
+    UpcomingPage
   ],
   imports: [
     BrowserModule,
@@ -38,7 +42,9 @@ import { IonicStorageModule } from '@ionic/storage';
     FavoritePage,
     DetailPage,
     MorePage,
-    TabsPage
+    TabsPage,
+    NotePage,
+    UpcomingPage
   ],
   providers: [
     StatusBar,

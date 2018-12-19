@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar color="dark">
-    <ion-title *ngIf="movie">{{movie.original_title}}</ion-title>
+    <ion-title *ngIf="movie">{{movie.title}}</ion-title>
     <ion-buttons end>
     <button ion-button icon-only style="font-size: 1.5em; " (click)="toggleFavorite()">
       <ion-icon [name]="isFavorite ? 'star':'star-outline'"></ion-icon></button>
@@ -18,6 +18,7 @@
       <h2>Synopsis
         <ion-badge color="dark">{{movie.vote_average}}</ion-badge>
       </h2>
+      <ion-badge color ="light"><p>date de sortie </p>{{movie.release_date}}</ion-badge>
       
     </ion-card-header>
     <ion-card-content>{{movie.overview}}</ion-card-content>

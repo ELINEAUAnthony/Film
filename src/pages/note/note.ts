@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DetailPage } from '../detail/detail';
 import { MovieApiProvider } from '../../providers/movie-api/movie-api';
-import { NotePage } from '../note/note';
+import { FilmPage } from '../film/film';
 import { UpcomingPage } from '../upcoming/upcoming';
 
 
@@ -16,21 +16,23 @@ interface IMovie {
 
 @IonicPage()
 @Component({
-  selector: 'page-film',
-  templateUrl: 'film.html',
+  selector: 'page-note',
+  templateUrl: 'note.html',
 })
-export class FilmPage {
+
+export class NotePage {
   film:any;
   movies=[];
   myFilm;
   page=1
-  constructor(public navCtrl: NavController, public navParams: NavParams,public movieApiProvider: MovieApiProvider) {
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams,
+              public movieApiProvider: MovieApiProvider) {
   }
-
 
   ionViewDidLoad() {
   
-    this.movieApiProvider.getFilmpopular(this.page).subscribe(
+    this.movieApiProvider.getFilmrated(this.page).subscribe(
       data => {
           this.movies = data.results;
           console.log(this.movies);
@@ -38,32 +40,36 @@ export class FilmPage {
    
    
   }
-
+  //bouton pour aller sur detail
   goToDetail(movie:IMovie){
     this.navCtrl.push(DetailPage, movie);
   }
-
+  //bouton pour aller sur note
   goToNote(){
     this.navCtrl.push(NotePage);
   }
 
+  goToPopular(){
+    this.navCtrl.push(FilmPage)
+  }
+ 
   goToUpComing(){
     this.navCtrl.push(UpcomingPage)
   }
-
+  //scroll pour faire défiler les pages
   doInfinite(infiniteScroll) {
+    //pour incrementer la page
     this.page++;
     setTimeout(() => {
-      this.movieApiProvider.getFilmpopular(this.page).subscribe((data => {
-        let newlist = data.results;
-        newlist.forEach((movie)=>{
+      this.movieApiProvider.getFilmrated(this.page).subscribe((data => {
+        let NextPage = data.results;
+        NextPage.forEach((movie)=>{
           this.movies.push(movie);
         });
       }));
       infiniteScroll.complete();
     }, 500);
   }
-
 }
 
 
