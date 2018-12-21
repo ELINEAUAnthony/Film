@@ -4,7 +4,7 @@ import { DetailPage } from '../detail/detail';
 import { MovieApiProvider } from '../../providers/movie-api/movie-api';
 import { NotePage } from '../note/note';
 import { UpcomingPage } from '../upcoming/upcoming';
-import { IMovie } from '../Interfaces/IMovie'
+import { IMovie } from '../Interfaces/IMovie';
 
 export interface IMovie{
 

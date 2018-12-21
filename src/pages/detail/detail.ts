@@ -1,22 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IMovie } from '../Interfaces/IMovie';
+import { FavoriteMovieProvider } from '../../providers/favorite-movie/favorite-movie';
 
-interface IMovie{
-  vote_count: number;
-  id: number;
-  video: boolean;
-  vote_average: number;
-  title: string;
-  popularity: number;
-  poster_path: string;
-  original_language: string;
-  original_title: string;
-  genre_ids: number[];
-  backdrop_path: string;
-  adult: boolean;
-  overview: string;
-  release_date: string;
-  
+export interface IMovie{
+
 }
 
 @IonicPage()
@@ -26,20 +14,24 @@ interface IMovie{
 })
 export class DetailPage {
   movie: IMovie;
-  isFavorite: boolean =false;
+  favorite: boolean =false;
+  isFavorite:boolean=false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              private favoriteMovieProvider : FavoriteMovieProvider) {
   }
 
   ionViewDidLoad() {
     this.movie = this.navParams.data;
+    this.favoriteMovieProvider
+      .isFavoriteMovie(this.movie)
+      .then (value => (this.favorite = value));
   }
-  toggleFavorite(){
-    if(this.isFavorite){
-      this.isFavorite = false;
-    }else{
-      this.isFavorite=true;
-    }
+
+  toggleFavorite(): void {
+    this.isFavorite =!this.isFavorite;
+    this.favoriteMovieProvider.toogleFavoriteMovie(this.movie);
   }
 
 }

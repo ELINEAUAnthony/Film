@@ -16,6 +16,7 @@ import { MovieApiProvider } from '../providers/movie-api/movie-api';
 import { IonicStorageModule } from '@ionic/storage';
 import { NotePage } from '../pages/note/note';
 import { UpcomingPage } from '../pages/upcoming/upcoming';
+import { FavoriteMovieProvider } from '../providers/favorite-movie/favorite-movie';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { UpcomingPage } from '../pages/upcoming/upcoming';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    MovieApiProvider
+    MovieApiProvider,
+    FavoriteMovieProvider
   ]
 })
 export class AppModule {}
