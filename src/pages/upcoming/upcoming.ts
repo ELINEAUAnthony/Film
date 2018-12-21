@@ -4,15 +4,12 @@ import { DetailPage } from '../detail/detail';
 import { MovieApiProvider } from '../../providers/movie-api/movie-api';
 import { NotePage } from '../note/note';
 import { FilmPage } from '../film/film';
+import { IMovie } from '../Interfaces/IMovie'
 
+export interface IMovie{
 
-interface IMovie {
-  id: number;
-  poster_path: string;
-  original_title: string;
-  overview: string;
-  language: string;
 }
+
 
 @IonicPage()
 @Component({
