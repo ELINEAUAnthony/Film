@@ -11,9 +11,9 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
   <ion-card *ngIf="movie">
-    <img src="{{'https://image.tmdb.org/t/p/w500/'+ movie.poster_path}}" />
+    <img src="{{'https://image.tmdb.org/t/p/w500/'+ movie.backdrop_path}}" />
     <ion-card-header>
       <h2>Synopsis
         <ion-badge color="dark">{{movie.vote_average}}</ion-badge>
@@ -22,7 +22,6 @@
       
     </ion-card-header>
     <ion-card-content>{{movie.overview}}</ion-card-content>
-    <p>la bande annonce se trouve ici {{movie.video}}</p>
   </ion-card>
 
 </ion-content>

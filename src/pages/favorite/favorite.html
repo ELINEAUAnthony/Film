@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>favorite</ion-title>
+    <ion-title>Favorie</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -30,10 +30,10 @@
         </ion-item>
       </ion-list>
       <ion-card-content>
-        <p>To choose more movies, click on this button.</p>
+        <p>Clique sur le bouton pour rechercher d'autre favorie</p>
         <button icon-left ion-button full (click)="findMovie()">
           <ion-icon name="search"></ion-icon>
-          Find a movie
+          Recherche un film
         </button>
       </ion-card-content>
     </ion-card>
@@ -41,11 +41,10 @@
     <ng-template #noFavorite>
       <ion-card>
         <ion-card-content>
-          <p>You haven't selected any movie</p>
-          <p>Please select one by using the button below</p>
+          <h2>Tu n'as pas de Favorie</h2>
           <button ion-button icon-left full (click)="findMovie()">
             <ion-icon name="search"></ion-icon>
-            Find a movie
+            Recherche un film
           </button>
         </ion-card-content>
       </ion-card>

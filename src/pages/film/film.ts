@@ -36,7 +36,6 @@ export class FilmPage {
           console.log(this.movies);
    })
    
-   
   }
 
   goToDetail(movie:IMovie){
