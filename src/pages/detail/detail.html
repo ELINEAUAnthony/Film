@@ -18,10 +18,18 @@
       <h2>Synopsis
         <ion-badge color="dark">{{movie.vote_average}}</ion-badge>
       </h2>
-      <ion-badge color ="light"><p>date de sortie </p>{{movie.release_date}}</ion-badge>
-      
+      <div>
+        <ion-badge color ="light"><p>date de sortie</p>{{movie.release_date}}</ion-badge>
+      </div>
     </ion-card-header>
     <ion-card-content>{{movie.overview}}</ion-card-content>
+  </ion-card>
+  
+  
+  <button ion-button full icon-left (click)="createCode()"><ion-icon name="barcode"></ion-icon>Create Code</button>
+
+  <ion-card *ngIf="createdCode">
+   <ngx-qrcode [qrc-value]="createdCode"></ngx-qrcode>
   </ion-card>
 
 </ion-content>

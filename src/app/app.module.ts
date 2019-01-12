@@ -17,7 +17,8 @@ import { IonicStorageModule } from '@ionic/storage';
 import { NotePage } from '../pages/note/note';
 import { UpcomingPage } from '../pages/upcoming/upcoming';
 import { FavoriteMovieProvider } from '../providers/favorite-movie/favorite-movie';
-
+import { NgxQRCodeModule } from 'ngx-qrcode2';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { FavoriteMovieProvider } from '../providers/favorite-movie/favorite-movi
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpClientModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    NgxQRCodeModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -52,7 +54,8 @@ import { FavoriteMovieProvider } from '../providers/favorite-movie/favorite-movi
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MovieApiProvider,
-    FavoriteMovieProvider
+    FavoriteMovieProvider,
+    BarcodeScanner
   ]
 })
 export class AppModule {}

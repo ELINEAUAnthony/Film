@@ -1,10 +1,11 @@
 page-detail {
-    .card-md p {
-        margin: 0px 83px 0px;
-        font-size: 1.4rem;
-        font-weight: normal;
-        line-height: 1.5;
+ 
+    .card-header-md {
+        font-size: 1.6rem;
         color: #222;
+        padding: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
-
 }

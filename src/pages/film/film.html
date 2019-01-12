@@ -4,7 +4,15 @@
    <!--  <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>-->
+    <div  class="popularMovie-navBar" padding>
     <ion-title>Film par Popularité</ion-title>
+    <button ion-button icon-left (click)="scanCode()"><ion-icon name="qr-scanner"></ion-icon>Scan</button>
+    <ion-card *ngIf="scannedCode">
+      <ion-card-content>
+        Result from Scan {{ scannedCode }}
+      </ion-card-content>
+    </ion-card>
+  </div>
   </ion-navbar>
 
 </ion-header>
@@ -12,16 +20,10 @@
 <ion-content padding>
   <!-- mise en place des boutons pour la navigation entre les recherches-->
   <ion-grid>
-    <ion-row>
-      <ion-col>
+    <ion-row class="ion-btn-content" padding>
         <button ion-button color = "dark"[disabled]="!isenabled" (click)="goToPopular()">Popularité</button>
-      </ion-col>
-      <ion-col>
-          <button ion-button color="dark" (click)="goToNote()">Note</button>
-        </ion-col>
-        <ion-col>
-          <button ion-button color="dark" (click)="goToUpComing()">Sortie</button>
-        </ion-col>
+        <button ion-button color="dark" (click)="goToNote()">Note</button>
+        <button ion-button color="dark" (click)="goToUpComing()">Sortie</button>
     </ion-row>
   </ion-grid>
 

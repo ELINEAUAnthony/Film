@@ -5,6 +5,7 @@ import { MovieApiProvider } from '../../providers/movie-api/movie-api';
 import { NotePage } from '../note/note';
 import { UpcomingPage } from '../upcoming/upcoming';
 import { IMovie } from '../Interfaces/IMovie';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 export interface IMovie{
 
@@ -24,7 +25,12 @@ export class FilmPage {
   movies=[];
   myFilm;
   page=1
-  constructor(public navCtrl: NavController, public navParams: NavParams,public movieApiProvider: MovieApiProvider) {
+  scannedCode= null;
+
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams,
+              public movieApiProvider: MovieApiProvider,
+              public barcodeScanner: BarcodeScanner) {
   }
 
 
@@ -62,6 +68,13 @@ export class FilmPage {
       infiniteScroll.complete();
     }, 500);
   }
+
+  scanCode(){
+    this.barcodeScanner.scan().then(barcodeData=>{
+    this.scannedCode = barcodeData.text;
+    this.navCtrl.push(DetailPage, {id : barcodeData.text})
+  })
+    }
 
 }
 
