@@ -8,7 +8,7 @@ export class MovieApiProvider {
   private Urlpopular = 'https://api.themoviedb.org/3/movie/popular?'
   private Urlrated = 'https://api.themoviedb.org/3/movie/top_rated?'
   private Urlupcoming ='https://api.themoviedb.org/3/movie/upcoming?'
-  private Urlid = 'https://api.themoviedb.org/3/movie/id?'
+  private Urlid = 'https://api.themoviedb.org/3/movie/{movie_id}?'
 
   Page = 1
 
@@ -27,7 +27,8 @@ export class MovieApiProvider {
   constructor(public http: HttpClient) {
     console.log('Hello MovieApiProvider Provider');
   }
-  public getfilm(id):Observable<any>{
+  public getfilm(iDpage):Observable<any>{
+    this.httpOptions.params.page = iDpage.toString()
     return this.http.get(this.Urlid,this.httpOptions)
   }
   public getFilmpopular(iDpage):Observable<any>{
