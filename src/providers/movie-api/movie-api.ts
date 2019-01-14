@@ -8,10 +8,10 @@ export class MovieApiProvider {
   private Urlpopular = 'https://api.themoviedb.org/3/movie/popular?'
   private Urlrated = 'https://api.themoviedb.org/3/movie/top_rated?'
   private Urlupcoming ='https://api.themoviedb.org/3/movie/upcoming?'
-  private Urlid = 'https://api.themoviedb.org/3/movie/{movie_id}?'
+  private Urlid = 'https://api.themoviedb.org/3/movie/'
 
   Page = 1
-
+  
 
   private httpOptions = {
     headers : new HttpHeaders({
@@ -22,14 +22,15 @@ export class MovieApiProvider {
       "language": "fr-FR",
       "page": this.Page.toString(),
       
+      
     }
   }
   constructor(public http: HttpClient) {
     console.log('Hello MovieApiProvider Provider');
   }
-  public getfilm(iDpage):Observable<any>{
-    this.httpOptions.params.page = iDpage.toString()
-    return this.http.get(this.Urlid,this.httpOptions)
+  public getFilmbyid(id):Observable<any>{
+    this.httpOptions.params.page = "1";
+    return this.http.get(this.Urlid+id,this.httpOptions)
   }
   public getFilmpopular(iDpage):Observable<any>{
     this.httpOptions.params.page = iDpage.toString()

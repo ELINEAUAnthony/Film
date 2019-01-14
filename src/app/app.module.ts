@@ -33,7 +33,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp,),
     HttpClientModule,
     IonicStorageModule.forRoot(),
     NgxQRCodeModule

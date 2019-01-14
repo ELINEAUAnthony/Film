@@ -45,7 +45,12 @@ export class FilmPage {
   }
 
   goToDetail(movie:IMovie){
-    this.navCtrl.push(DetailPage, movie);
+    console.log(movie.id);
+    let data = {
+      id:movie.id
+    }
+    this.navCtrl.push(DetailPage, data);
+
   }
 
   goToNote(){
@@ -54,6 +59,7 @@ export class FilmPage {
 
   goToUpComing(){
     this.navCtrl.push(UpcomingPage)
+  
   }
 
   doInfinite(infiniteScroll) {
@@ -69,10 +75,10 @@ export class FilmPage {
     }, 500);
   }
 
-  scanCode(){
+  scanCode(movie:IMovie){
     this.barcodeScanner.scan().then(barcodeData=>{
     this.scannedCode = barcodeData.text;
-    this.navCtrl.push(DetailPage, {id : barcodeData.text})
+    this.navCtrl.push(DetailPage, {id : barcodeData.text.toString()})
   })
     }
 

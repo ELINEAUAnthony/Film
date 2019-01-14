@@ -28,8 +28,8 @@
   
   <button ion-button full icon-left (click)="createCode()"><ion-icon name="barcode"></ion-icon>Create Code</button>
 
-  <ion-card *ngIf="createdCode">
+  
    <ngx-qrcode [qrc-value]="createdCode"></ngx-qrcode>
-  </ion-card>
+  
 
 </ion-content>

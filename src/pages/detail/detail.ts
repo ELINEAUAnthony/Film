@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { IMovie } from '../Interfaces/IMovie';
 import { FavoriteMovieProvider } from '../../providers/favorite-movie/favorite-movie';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { MovieApiProvider } from '../../providers/movie-api/movie-api';
 
 export interface IMovie{
 
@@ -19,18 +20,27 @@ export class DetailPage {
   isFavorite:boolean=false;
   qrData = null;
   createdCode = null;
+  favoriteMovies: IMovie[] = []
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private favoriteMovieProvider : FavoriteMovieProvider,
-              public barcodeScanner: BarcodeScanner) {
+              public barcodeScanner: BarcodeScanner,
+              public movieApiProvider: MovieApiProvider) {
   }
 
   ionViewDidLoad() {
-    this.movie = this.navParams.data;
-    this.favoriteMovieProvider
-      .isFavoriteMovie(this.movie)
-      .then (value => (this.favorite = value));
+    //this.movie = this.navParams.get('id');
+    this.movieApiProvider.getFilmbyid(this.navParams.get('id')).subscribe(
+      data => {
+          this.movie = data;
+          console.log(this.movie);
+
+          this.favoriteMovieProvider
+          .isFavoriteMovie(this.movie)
+          .then (value => (this.favorite = value));
+   });
+
   }
 
   toggleFavorite(): void {
@@ -39,10 +49,8 @@ export class DetailPage {
   }
 
   createCode(){
-    this.createdCode = this.movie.id.toString();
-    console.log(this.movie.id.toString())
+    this.createdCode = this.navParams.get('id').toString();
+    console.log(this.movie.toString())
   }
-
-  
 
 }

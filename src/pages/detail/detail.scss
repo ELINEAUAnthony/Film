@@ -8,4 +8,11 @@ page-detail {
         justify-content: space-between;
         align-items: center;
     }
+    .qrcode{
+        display: flex;
+        justify-content: center;
+        img{
+            height: 155px
+        }
+    }
 }

@@ -11,7 +11,7 @@ import { FilmPage } from '../film/film';
   templateUrl: 'favorite.html',
 })
 export class FavoritePage {
-  favoriteMovies: IMovie
+  favoriteMovies: IMovie[] = [];
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
