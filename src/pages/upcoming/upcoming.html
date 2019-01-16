@@ -1,27 +1,21 @@
 <ion-header>
 
     <ion-navbar color="dark">
-     <!--  <button ion-button menuToggle>
-        <ion-icon name="menu"></ion-icon>
-      </button>-->
-      <ion-title>Film par date de sortie</ion-title>
+        <div class="upcomingMovie-navBar" padding>
+          <ion-title>Film par date de sortie</ion-title>
+          <button ion-button icon-left (click)="scanCode()"><ion-icon name="qr-scanner"></ion-icon>Scan</button>
+        </div>
     </ion-navbar>
   
   </ion-header>
   
   <ion-content padding>
     <!-- mise en place des boutons pour la navigation entre les recherches-->
-    <ion-grid>
-      <ion-row>
-      <ion-col>
+    <ion-grid> 
+      <ion-row class="ion-btn-content" padding>
         <button ion-button color="dark" (click)="goToPopular()">Popularité</button>
-      </ion-col>
-      <ion-col>
-          <button ion-button color="dark" (click)="goToNote()">Note</button>
-        </ion-col>
-        <ion-col>
-            <button ion-button color = "dark"[disabled]="!isenabled" (click)="goToUpcoming()">Sortie</button>
-        </ion-col>
+        <button ion-button color="dark" (click)="goToNote()">Note</button>
+        <button ion-button color = "dark"[disabled]="!isenabled" (click)="goToUpcoming()">Sortie</button>
       </ion-row>
     </ion-grid>
 
@@ -32,6 +26,7 @@
         </ion-col>
       </ion-row>
     </ion-grid>
+
     <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
       <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="">
       </ion-infinite-scroll-content>

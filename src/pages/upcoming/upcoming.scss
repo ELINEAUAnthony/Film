@@ -1,3 +1,11 @@
 page-upcoming {
+    .ion-btn-content {
+        justify-content: space-between;
+    }
+    .upcomingMovie-navBar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 
 }

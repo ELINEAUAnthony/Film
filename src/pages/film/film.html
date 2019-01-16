@@ -1,14 +1,9 @@
 <ion-header>
 
   <ion-navbar color="dark">
-   <!--  <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>-->
     <div  class="popularMovie-navBar" padding>
     <ion-title>Film par Popularité</ion-title>
     <button ion-button icon-left (click)="scanCode()"><ion-icon name="qr-scanner"></ion-icon>Scan</button>
-    <ion-card *ngIf="scannedCode">
-    </ion-card>
   </div>
   </ion-navbar>
 
@@ -34,6 +29,7 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+
   <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
     <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="">
     </ion-infinite-scroll-content>
