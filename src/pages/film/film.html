@@ -10,6 +10,9 @@
 </ion-header>
 
 <ion-content padding>
+
+  <ion-searchbar placeholder="Recherche un film" [(ngModel)]="search" (keyup)="filtre($event.target.value)"></ion-searchbar>
+
   <!-- mise en place des boutons pour la navigation entre les recherches-->
   <ion-grid>
     <ion-row class="ion-btn-content" padding>
@@ -19,7 +22,7 @@
     </ion-row>
   </ion-grid>
 
-    
+
   <ion-grid *ngIf="movies">
     <ion-row>
       <ion-col col-6 *ngFor="let movie of movies">

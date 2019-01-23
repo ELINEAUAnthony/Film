@@ -23,6 +23,7 @@ export class UpcomingPage {
   myFilm;
   page=1
   scannedCode=null;
+  search;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -37,9 +38,30 @@ export class UpcomingPage {
       data => {
           this.movies = data.results;
           console.log(this.movies);
-   })
-   
-   
+   })  
+  }
+
+  filtre(theSearch: string) {
+    this.page = 1;
+    if(theSearch != ""){
+      this.search = theSearch;
+      let res = this.movieApiProvider.searchMovies(this.search,this.page);
+      console.log(res)
+      res.subscribe(
+        data =>{
+          this.movies = data.results;
+        },
+        error =>{
+          console.log(error);
+        }
+      )
+    }else{
+      this.movieApiProvider.getFilmpopular(this.page).subscribe(
+        data => {
+            this.movies = data.results;
+            console.log(this.movies);
+     })   
+    }
   }
   //bouton pour aller sur detail
   goToDetail(movie:IMovie){

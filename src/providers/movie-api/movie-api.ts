@@ -8,6 +8,7 @@ export class MovieApiProvider {
   private Urlpopular = 'https://api.themoviedb.org/3/movie/popular?'
   private Urlrated = 'https://api.themoviedb.org/3/movie/top_rated?'
   private Urlupcoming ='https://api.themoviedb.org/3/movie/upcoming?'
+  private UrlSearch = 'https://api.themoviedb.org/3/search/movie?'
   private Urlid = 'https://api.themoviedb.org/3/movie/'
 
   Page = 1
@@ -21,8 +22,7 @@ export class MovieApiProvider {
       "api_key" : "3af9c524dd7e2699f76bded125a10ba9",
       "language": "fr-FR",
       "page": this.Page.toString(),
-      
-      
+      "query" :"",       
     }
   }
   constructor(public http: HttpClient) {
@@ -45,5 +45,13 @@ export class MovieApiProvider {
     this.httpOptions.params.page = iDpage.toString()
     return this.http.get(this.Urlupcoming,this.httpOptions);
   }
+
+  public searchMovies(searchStr, iDpage):Observable<any>{
+    this.httpOptions.params.page = iDpage.toString()
+    this.httpOptions.params.query = searchStr 
+    return this.http.get(this.UrlSearch,this.httpOptions);
+   
+  }
+
 
 }
