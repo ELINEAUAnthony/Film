@@ -18,8 +18,4 @@ export class MorePage {
               public navParams: NavParams) {
   }
 
-
-
-
-
 }
