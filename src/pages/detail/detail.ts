@@ -16,7 +16,6 @@ export interface IMovie{
 })
 export class DetailPage {
   movie: IMovie;
-  favorite: boolean =false;
   isFavorite:boolean=false;
   qrData = null;
   createdCode = null;
@@ -30,7 +29,6 @@ export class DetailPage {
   }
 
   ionViewDidLoad() {
-    //this.movie = this.navParams.get('id');
     this.movieApiProvider.getFilmbyid(this.navParams.get('id')).subscribe(
       data => {
           this.movie = data;
@@ -38,7 +36,7 @@ export class DetailPage {
 
           this.favoriteMovieProvider
           .isFavoriteMovie(this.movie)
-          .then (value => (this.favorite = value));
+          .then (value => (this.isFavorite = value));
    });
 
   }
