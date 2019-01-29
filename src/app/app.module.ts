@@ -56,8 +56,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MovieApiProvider,
     FavoriteMovieProvider,
-    BarcodeScanner,
-
+    BarcodeScanner
   ],
 })
 export class AppModule {}
